@@ -29,8 +29,8 @@ This application is structured as a private Next.js project and uses Tailwind CS
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
-cd cloud-care
+git clone <repository-url>
+cd care-cloud-front
 ````
 
 ### 2. Install Dependencies
