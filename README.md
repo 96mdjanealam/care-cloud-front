@@ -1,8 +1,8 @@
-# Cloud Care
+# Care Cloud
 
 ## Introduction
 
-**Cloud Care** is a modern web application built with **Next.js 16** and **React 19**, designed to deliver a fast, scalable, and user-friendly cloud-based experience. The project leverages cutting-edge frontend technologies, component libraries, and type-safe validation to provide a robust and maintainable architecture.
+**Care Cloud** is a modern web application built with **Next.js 16** and **React 19**, designed to deliver a fast, scalable, and user-friendly cloud-based experience. The project leverages cutting-edge frontend technologies, component libraries, and type-safe validation to provide a robust and maintainable architecture.
 
 This application is structured as a private Next.js project and uses Tailwind CSS for styling, Radix UI for accessible components, and modern tooling for linting, type checking, and development.
 
