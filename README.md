@@ -119,10 +119,9 @@ npm run start
 
 * `tailwindcss`
 * `@tailwindcss/postcss`
-* `@radix-ui/*`
+* `shadcn UI`
 * `lucide-react`
 * `clsx`
-* `class-variance-authority`
 * `tailwind-merge`
 * `tw-animate-css`
 
@@ -138,7 +137,6 @@ npm run start
 
 * `recharts`
 * `sonner`
-* `cmdk`
 
 ### Tooling
 
