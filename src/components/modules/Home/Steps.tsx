@@ -13,26 +13,17 @@ const steps = [
   { icon: HeartPulse, title: 'Health recovery', description: 'Start your journey to better health.' },
 ];
 
-const StepCard = ({ icon: Icon, title, description, index }: { icon: React.ElementType, title: string, description: string, index: number }) => {
-    const bgColors = [
-        'bg-blue-50', 'bg-pink-50', 'bg-green-50', 'bg-yellow-50',
-        'bg-pink-50', 'bg-blue-50', 'bg-yellow-50', 'bg-green-50'
-    ];
-    const textColors = [
-        'text-blue-500', 'text-pink-500', 'text-green-500', 'text-yellow-500',
-        'text-pink-500', 'text-blue-500', 'text-yellow-500', 'text-green-500'
-    ];
-
+const StepCard = ({ icon: Icon, title, description }: { icon: React.ElementType, title: string, description: string, index: number }) => {
     return (
-        <Card className={`${bgColors[index % 8]}`}>
-            <CardContent className="p-4">
-                 <div className="flex items-center space-x-4">
-                    <div className={`p-3 rounded-full ${textColors[index % 8]} bg-white shadow-sm`}>
-                        <Icon size={24} />
+        <Card className="group border-border bg-card hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 p-0 gap-0">
+            <CardContent className="p-8">
+                 <div className="flex flex-col items-start gap-6">
+                    <div className="p-4 rounded-2xl bg-muted/50 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-sm">
+                        <Icon size={28} />
                     </div>
                     <div>
-                        <h3 className="font-bold text-foreground">{title}</h3>
-                        <p className="text-muted-foreground text-sm">{description}</p>
+                        <h3 className="text-lg font-bold text-foreground mb-2">{title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
                     </div>
                 </div>
             </CardContent>

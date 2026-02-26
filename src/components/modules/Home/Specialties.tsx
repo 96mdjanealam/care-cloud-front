@@ -45,29 +45,34 @@ const Specialities = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {specialists.map((specialist) => (
             <Card
               key={specialist.name}
               className={cn(
-                'text-center transition-all duration-300 cursor-pointer hover:shadow-lg hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground',
+                'group relative overflow-hidden border-border bg-card transition-all duration-500 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 cursor-pointer p-0 gap-0',
               )}
             >
-              <CardContent className="p-6">
+              <CardContent className="p-8 text-center">
                  <div
                   className={cn(
-                    'w-16 h-16 rounded-full mx-auto flex items-center justify-center mb-4',
+                    'w-20 h-20 rounded-2xl mx-auto flex items-center justify-center mb-6 bg-muted/50 group-hover:bg-primary/10 transition-colors duration-500',
                   )}
                 >
                   <specialist.icon
-                    className={cn(specialist.iconColor)}
-                    size={32}
+                    className="text-primary group-hover:scale-110 transition-transform duration-500"
+                    size={40}
                   />
                 </div>
-                <h3 className="text-lg font-semibold">
+                <h3 className="text-xl font-bold text-foreground mb-2">
                   {specialist.name}
                 </h3>
+                <p className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                  Explore Experts
+                </p>
               </CardContent>
+              {/* Subtle accent line on hover */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </Card>
           ))}
         </div>

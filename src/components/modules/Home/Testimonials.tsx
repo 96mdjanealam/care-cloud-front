@@ -38,29 +38,30 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="bg-background relative">
-               <CardContent className="p-8">
-                <Quote className="absolute top-4 left-4 text-primary" size={48} />
+            <Card key={testimonial.name} className="group border-border bg-card hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 p-0 gap-0">
+               <CardContent className="p-10 relative">
+                <Quote className="absolute top-6 right-8 text-primary/10 group-hover:text-primary/20 transition-colors" size={64} />
                 <div className="relative z-10">
-                  <p className="text-muted-foreground mb-6">{testimonial.quote}</p>
-                  <div className="flex items-center">
-                      <Image 
-                        src={testimonial.image} 
-                        alt={testimonial.name} 
-                        width={64} 
-                        height={64} 
-                        className="rounded-full"
-                      />
+                  <div className="flex mb-6">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="text-yellow-400 fill-yellow-400" size={16} />
+                      ))}
+                  </div>
+                  <p className="text-lg text-foreground italic leading-relaxed mb-8">"{testimonial.quote}"</p>
+                  <div className="flex items-center pt-6 border-t border-border">
+                      <div className="relative size-14 rounded-full overflow-hidden border-2 border-muted transition-colors group-hover:border-primary/20">
+                          <Image 
+                            src={testimonial.image} 
+                            alt={testimonial.name} 
+                            fill
+                            className="object-cover"
+                          />
+                      </div>
                       <div className="ml-4">
                           <h4 className="font-bold text-foreground">{testimonial.name}</h4>
-                          <p className="text-muted-foreground text-sm">{testimonial.role}</p>
-                          <div className="flex mt-1">
-                              {[...Array(testimonial.rating)].map((_, i) => (
-                                  <Star key={i} className="text-yellow-400 fill-current" size={16} />
-                              ))}
-                          </div>
+                          <p className="text-primary text-xs font-bold uppercase tracking-widest">{testimonial.role}</p>
                       </div>
                   </div>
                 </div>

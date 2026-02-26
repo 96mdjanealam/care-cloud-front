@@ -68,38 +68,39 @@ export function Hero({
   return (
     <div className="w-full relative">
       {/* Radial Gradient Background from Bottom */}
+      {/* Subtle Background Gradient */}
       <div
-        className="absolute inset-0 z-0 "
+        className="absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(125% 125% at 50% 90%, #fff 30%, #155DFC 100%)",
+            "radial-gradient(100% 100% at 50% 100%, oklch(0.95 0.05 250) 0%, transparent 100%)",
         }}
       />
       {/* Content Container */}
-      <div className="w-full px-4 py-8 md:px-8 lg:px-16 relative">
+      <div className="w-full px-4 py-16 md:px-8 lg:px-16 relative">
         <div className="mx-auto max-w-[1200px]">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left Column - Hero Content */}
-            <div className="flex flex-col justify-center space-y-6">
+            <div className="flex flex-col justify-center space-y-8">
               {/* Badge */}
-              <div className="inline-flex items-center gap-3 self-start rounded-full bg-white px-4 py-2">
+              <div className="inline-flex items-center gap-2 self-start rounded-full bg-primary/10 px-4 py-1.5 border border-primary/20">
                 <SparkleIcon />
-                <span className="text-[11.9px] font-medium text-blue-700">
+                <span className="text-[13px] font-semibold text-primary">
                   {badge.text}
                 </span>
               </div>
 
               {/* Heading */}
-              <div className="space-y-2">
-                <h1 className="text-[51px] leading-[60px]">{heading.line1}</h1>
-                <h1 className="text-[51px] leading-[60px]">{heading.line2}</h1>
+              <div className="space-y-4">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+                  {heading.line1} <br />
+                  <span className="text-primary">{heading.line2}</span>
+                </h1>
               </div>
 
               {/* Description */}
-              <div className="space-y-1 text-[17px] leading-7 text-gray-600">
-                {description.map((line, index) => (
-                  <p key={index}>{line}</p>
-                ))}
+              <div className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                <p>{description.join(" ")}</p>
               </div>
 
               {/* Buttons */}
@@ -107,7 +108,7 @@ export function Hero({
                 {buttons.primary && (
                   <Button
                     onClick={buttons.primary.onClick}
-                    className="h-[63.622px] gap-3 rounded-xl bg-blue-600 px-8 text-[15.3px] hover:bg-blue-700"
+                    className="h-14 gap-2 rounded-xl bg-primary px-8 text-base font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all"
                   >
                     <Search className="size-5" />
                     {buttons.primary.text}
@@ -117,7 +118,7 @@ export function Hero({
                   <Button
                     onClick={buttons.secondary.onClick}
                     variant="outline"
-                    className="h-[63.622px] gap-3 rounded-xl border-blue-600 px-8 text-[15.3px] text-blue-600 hover:bg-blue-50"
+                    className="h-14 gap-2 rounded-xl border-border px-8 text-base font-semibold hover:bg-secondary transition-all"
                   >
                     <Calendar className="size-5" />
                     {buttons.secondary.text}
@@ -126,14 +127,14 @@ export function Hero({
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-4">
+              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
                 {stats.map((stat, index) => (
-                  <div key={index} className="space-y-2">
+                  <div key={index} className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <p className="text-[25.5px] leading-9">{stat.value}</p>
+                      <p className="text-2xl font-bold text-foreground">{stat.value}</p>
                       {stat.icon}
                     </div>
-                    <p className="text-[13.6px] leading-6 text-gray-600">
+                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
                       {stat.label}
                     </p>
                   </div>
@@ -143,10 +144,10 @@ export function Hero({
 
             {/* Right Column - Form Card */}
             <div className="flex items-center justify-center lg:justify-end">
-              <div className="w-full max-w-[559.929px] rounded-2xl bg-white p-8 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
+              <div className="w-full max-w-[480px] rounded-3xl bg-card p-8 border border-border shadow-2xl shadow-primary/5">
                 {/* Card Header */}
-                <div className="mb-6 flex items-center justify-between">
-                  <h2 className="text-[20.4px] leading-6">{formCard.title}</h2>
+                <div className="mb-8 flex items-center justify-between">
+                  <h2 className="text-xl font-bold text-foreground">{formCard.title}</h2>
                   <LargeSparkleIcon />
                 </div>
 
@@ -156,30 +157,32 @@ export function Hero({
                   <div className="space-y-2">
                     <Label
                       htmlFor="symptoms"
-                      className="text-[11.9px] text-gray-700"
+                      className="text-sm font-semibold text-foreground"
                     >
                       {formCard.symptomLabel}
                     </Label>
-                    <Input
-                      id="symptoms"
-                      name="symptoms"
-                      placeholder={formCard.symptomPlaceholder}
-                      className="h-[49.787px] rounded-xl border-gray-300"
-                    />
+                    <div className="relative">
+                       <Input
+                        id="symptoms"
+                        name="symptoms"
+                        placeholder={formCard.symptomPlaceholder}
+                        className="h-14 rounded-2xl border-border bg-muted/30 focus:bg-background transition-all"
+                      />
+                    </div>
                   </div>
 
                   {/* Submit Button */}
                   <Button
                     type="submit"
-                    className="h-[59.986px] w-full rounded-xl bg-blue-600 text-[15.3px] hover:bg-blue-700"
+                    className="h-14 w-full rounded-2xl bg-primary text-base font-bold shadow-xl shadow-primary/25 hover:bg-primary/90 transition-all"
                   >
                     {formCard.submitText}
                   </Button>
                 </form>
 
                 {/* Footer */}
-                <div className="mt-6 border-t border-gray-200 pt-4">
-                  <p className="text-center text-[11.9px] leading-5 text-gray-600">
+                <div className="mt-8 border-t border-border pt-6">
+                  <p className="text-center text-xs font-medium text-muted-foreground leading-relaxed">
                     {formCard.footerText}
                   </p>
                 </div>

@@ -32,28 +32,29 @@ const doctors = [
 
 const DoctorCard = ({ doctor }: { doctor: typeof doctors[0] }) => {
     return (
-        <Card className="text-center overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <CardHeader className="bg-blue-50/50 items-center p-6">
+        <Card className="group overflow-hidden border-border bg-card hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 p-0 gap-0">
+            <CardHeader className="relative items-center p-0 h-64 overflow-hidden">
                 <Image 
                     src={doctor.image} 
                     alt={doctor.name} 
-                    width={96} 
-                    height={96}
-                    className="rounded-full border-4 border-white shadow-md"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-            </CardHeader>
-            <CardContent className="p-6">
-                <CardTitle className="text-lg">{doctor.name}</CardTitle>
-                <p className="text-primary font-medium mt-1">{doctor.specialty}</p>
-                <div className="flex items-center justify-center my-3 text-sm">
-                    <Star className="text-yellow-400 fill-current" size={16} />
-                    <span className="ml-2 text-foreground font-semibold">{doctor.rating}</span>
-                    <span className="ml-2 text-muted-foreground">({doctor.reviews} reviews)</span>
+                <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-3 rounded-full flex items-center gap-1.5 shadow-sm">
+                    <Star className="text-yellow-400 fill-yellow-400" size={14} />
+                    <span className="text-xs font-bold text-foreground">{doctor.rating}</span>
                 </div>
+            </CardHeader>
+            <CardContent className="p-8">
+                <p className="text-primary text-sm font-bold tracking-wider uppercase mb-2">{doctor.specialty}</p>
+                <CardTitle className="text-xl font-bold text-foreground mb-3">{doctor.name}</CardTitle>
+                <p className="text-muted-foreground text-sm line-clamp-2">
+                    Expert medical professional dedicated to providing top-notch healthcare services in {doctor.specialty}.
+                </p>
             </CardContent>
-             <CardFooter className="grid grid-cols-2 gap-2 p-4 pt-0">
-                <Button variant="outline">View Profile</Button>
-                <Button>Book Now</Button>
+             <CardFooter className="grid grid-cols-2 gap-4 p-8 pt-0">
+                <Button variant="outline" className="rounded-xl font-semibold border-border hover:bg-muted transition-all">Profile</Button>
+                <Button className="rounded-xl font-bold bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">Book Now</Button>
             </CardFooter>
         </Card>
     )
@@ -61,21 +62,20 @@ const DoctorCard = ({ doctor }: { doctor: typeof doctors[0] }) => {
 
 const TopRatedDoctors = () => {
   return (
-    <section className="bg-blue-50/50 py-24">
+    <section className="py-32 bg-background border-y border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-foreground">Our Top Rated Doctor</h2>
-          <p className="text-muted-foreground mt-4">
-            Access to medical experts from various specialities, ready to provide you with top-notch medical services.
-          </p>
+        <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight">Our Top Rated Doctors</h2>
+            <p className="text-lg text-muted-foreground mt-4">
+              World-class medical experts ready to provide personalized healthcare solutions.
+            </p>
+          </div>
+          <Button size="lg" className="rounded-xl font-bold bg-primary mb-2">View All Doctors</Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {doctors.map(doctor => <DoctorCard key={doctor.name} doctor={doctor} />)}
-        </div>
-        
-        <div className="text-center mt-12">
-            <Button size="lg">View All Doctors</Button>
         </div>
       </div>
     </section>
